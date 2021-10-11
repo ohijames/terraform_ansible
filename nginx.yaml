@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    key_file: /etc/nginx/ssl/nginx.crt
+    cert_file: /etc/nginx/ssl/nginx.crt
+  tasks:
+    - name: Installs Nginx web server
+      apt: 
+        name: nginx
+        state: present
+        update_cache: yes
+    - name: Create SSL directory
+      file: path=/etc/nginx/ssl state=directory 
+    - name: copy key_file to remote server
+      copy: src=files/nginx.key dest={{ key_file }} mode=400 owner=root group=root
+    - name: copy key_file to remote server
+      copy: src=files/nginx.crt dest={{ cert_file }} mode=644 owner=root group=root
+    - name: update default.conf file on remote servers
+      template: src=template/default.conf dest=/etc/nginx/conf.d/default.conf mode=644 owner=root group=root backup=yes
+    - name: restart nginx
+      service: name=nginx state=restarted 
+
+
