@@ -10,3 +10,7 @@ design - terraform_demo.jpg
 5 - Run terraform init
 6 - Run terraform plan 
 7 - Run terraform apply
+
+Notes:
+I was unable to automate provioning of alb certificate using ansible/terraform
+
