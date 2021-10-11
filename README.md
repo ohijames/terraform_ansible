@@ -2,7 +2,7 @@
 High available nginx web application
 
 
-
+design - terraform_demo.jpg
 1 - Install and configure AWS CLI, terraform and ansible
 2 - Download the repo to your local machine
 3 - Go into terraform_ansible directory
